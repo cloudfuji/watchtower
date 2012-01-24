@@ -6,9 +6,12 @@ rescue => e
   puts "Error loading the Bushido routes:"
   puts "#{e.inspect}"
 end
+
 Watchtower::Application.routes.draw do
   devise_for :users
 
+  root :to => 'application#index'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

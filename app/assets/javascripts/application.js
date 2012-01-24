@@ -6,4 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require ./vendor/ember-0.9.3.js
+
+//= require watchtower.js
+
