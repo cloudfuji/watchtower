@@ -3,12 +3,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
 <%= render "shared/head" %>
 <body>
-  <script type="text/x-handlebars">
-    {{#view App.MyView}}
-      <h1>Hello world!</h1>
-    {{/view}}
-  </script>
-<%= yield %>
-<%= render "shared/javascripts" %>
+  <%= yield %>
+  <%= render "shared/javascripts" %>
 </body>
 </html>
