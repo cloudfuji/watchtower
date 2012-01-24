@@ -28,6 +28,16 @@ GIT
       rake
       rest-client
 
+GIT
+  remote: https://github.com/chriseppstein/compass.git
+  revision: 8c84869b0b6bc5396e264fea15c71d4e346ac5d0
+  branch: master
+  specs:
+    compass (0.12.alpha.4.8c84869)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -73,10 +83,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.2.0)
-    compass (0.11.7)
-      chunky_png (~> 1.2)
-      fssm (>= 0.2.7)
-      sass (~> 3.1)
     devise (1.5.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -182,7 +188,7 @@ DEPENDENCIES
   awesome_print
   bushido!
   coffee-rails (~> 3.1.0)
-  compass
+  compass!
   devise
   devise_bushido_authenticatable!
   factory_girl_rails
@@ -190,7 +196,7 @@ DEPENDENCIES
   pg
   rails (= 3.1.0)
   rspec-rails
-  sass-rails (~> 3.1.0)
+  sass-rails (~> 3.1.5)
   tane!
   turn
   uglifier
