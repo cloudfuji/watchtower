@@ -7,6 +7,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require ./vendor/ember-0.9.3.js
+//= require ./vendor/ember-data.js
 
 //= require watchtower.js
 

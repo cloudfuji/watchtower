@@ -1,5 +1,10 @@
-<script type="text/x-handlebars">
-  {{#view App.MyView}}
-  <h1>Hello world!</h1>
-  {{/view}}
+<script type="text/x-handlebars" data-template-name="child_view">
+  <span>Child span</span>
+</script>
+
+<script type="text/x-handlebars" data-template-name="watchtower">
+  <div class="watchtower">
+    OMG COOL {{wot}}
+    {{view App.ChildView}}
+  </div>
 </script>
