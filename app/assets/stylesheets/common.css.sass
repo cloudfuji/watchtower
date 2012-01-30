@@ -1,10 +1,41 @@
 @import compass/reset
+@import compass/css3/border-radius
 
 html body
   width: 100%
   height: 100%
 
 body
-  background: image_url("paper-background.jpg") no-repeat
+  background: #000 image_url("paper-background.jpg") no-repeat top center
 
+h1.title
+  font-size: 2em
+  font-family: helvetica, arial, sans-serif
+  padding: 15px 0 0 35px
+  opacity: .35
+
+#watchtower
+  width: 50px
+  height: 100px
+  display: none
+  z-index: 200
+
+.service
+  display: none
+  width: 50px
+  height: 50px
+  position: absolute
+  background: #000
+  z-index: 100
+
+.menue
+  z-index: 2000
+
+#watchtower, .service
+  padding: 10px
+  border: 1px solid transparent
+  &:hover
+    border: 1px solid black
+    +border-radius(5px)
+    cursor: pointer
 

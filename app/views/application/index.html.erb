@@ -1,10 +1,15 @@
-<script type="text/x-handlebars" data-template-name="child_view">
-  <span>Child span</span>
+<script type="text/x-handlebars">
+  {{#view App.WatchtowerView}}
+  <p id="watchtower"><img src="/assets/tower.png" height="100px" width="50px" /></p>
+  {{/view}}    
+
+  {{#collection contentBinding="App.serviceController" }}
+  <p class="service">service</p>
+  {{/collection}}
 </script>
 
-<script type="text/x-handlebars" data-template-name="watchtower">
-  <div class="watchtower">
-    OMG COOL {{wot}}
-    {{view App.ChildView}}
-  </div>
-</script>
+<!-- {{#each App.ServiceController}} -->
+<!--   {{#view App.PersonView contentBinding="this"}} -->
+<!--     {{content.firstName}} {{content.lastName}} -->
+<!--   {{/view}} -->
+<!-- {{/each}} -->
