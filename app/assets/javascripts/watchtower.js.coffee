@@ -2,11 +2,12 @@ window.App ||= Em.Application.create()
 App.store = DS.Store.create()
 
 App.WatchtowerView = Em.View.extend
+  classNames: ['watchtower']
   click: (evt) ->
     alert('launch tower menu')
   didInsertElement: ->
     console.log("omg view rendered?", this, this.$());
-    this.$('#watchtower')
+    this.$()
         .center()
         .fadeIn('slow', -> App.serviceController.renderTree($(this), $('.service')))
 
@@ -17,28 +18,29 @@ App.WatchtowerView = Em.View.extend
 #   ,status: DS.attr('string')
 
 App.Service = Em.Object.extend
-  service_url: null
-  ,service_type: 'http'
+  url: null
+  ,type: 'http'
   ,interval: 5
   ,status: 'okay'
 
 
 App.serviceController = SC.ArrayProxy.create
   content: [
-    App.Service.create service_url: "http://bushi.do"
-    App.Service.create service_url: "http://osr.bushi.do"
-    App.Service.create service_url: "http://www.gobushido.com"
-    App.Service.create service_url: "http://4chan.org", status: 'down'
-    App.Service.create service_url: "http://www.facebook.com"
-    App.Service.create service_url: "http://www.gamefaq.com", status: 'down'
+    App.Service.create url: "http://bushi.do"
+    App.Service.create url: "http://osr.bushi.do"
+    App.Service.create url: "http://www.gobushido.com"
+    App.Service.create url: "http://4chan.org", status: 'down'
+    App.Service.create url: "http://www.facebook.com"
   ]
 
   ,loadTodos: ->
     #services = App.store.findAll(App.Service)
     this.pushObject services
 
+  , addService: (service) ->
+    this.pushObject service
+
   ,renderTree: (centerElement, serviceElements) ->
-    console.log("showing tree on", centerElement, serviceElements)
 
     #Define the center of the circle (cs,cy)
     cx = centerElement.offset().left
@@ -58,8 +60,7 @@ App.serviceController = SC.ArrayProxy.create
     y = null
 
     for element, i in serviceElements
-      console.log('loopin eles', i, serviceElements[i])
-#    for i in [0..n] by 1
+
       x = cx + r * Math.cos(cone * i)
       y = cy + r * Math.sin(cone * i)
 
@@ -68,11 +69,6 @@ App.serviceController = SC.ArrayProxy.create
       x = Math.round(x)
       y = Math.round(y)
 
-      # new_node = $('<div class="service" />')
-      # new_node.css
-      #        'left' : x + "px",
-      #        'top' :  y + "px"
-
       console.log('sestting dims', x, y)
 
       $(element).css({
@@ -80,5 +76,3 @@ App.serviceController = SC.ArrayProxy.create
              'top' :  y + "px"})
 
       $(element).fadeIn('fast')
-
-      #centerElement.parent().append new_node

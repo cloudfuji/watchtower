@@ -1,15 +1,17 @@
 <script type="text/x-handlebars">
   {{#view App.WatchtowerView}}
-  <p id="watchtower"><img src="/assets/tower.png" height="100px" width="50px" /></p>
+   <img src="/assets/tower.png" height="100px" width="50px" />
   {{/view}}    
 
-  {{#collection contentBinding="App.serviceController" }}
-  <p class="service">service</p>
-  {{/collection}}
+
+{{#each App.ServiceController}}
+  {{#view App.ServiceView contentBinding="this"}}
+    <p class="service">service</p>
+  {{/view}}
+{{/each}}
 </script>
 
-<!-- {{#each App.ServiceController}} -->
-<!--   {{#view App.PersonView contentBinding="this"}} -->
-<!--     {{content.firstName}} {{content.lastName}} -->
-<!--   {{/view}} -->
-<!-- {{/each}} -->
+
+  <!-- {{#collection contentBinding="App.serviceController" }} -->
+  <!-- <p class="service">service</p> -->
+  <!-- {{/collection}} -->

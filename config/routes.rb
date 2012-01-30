@@ -1,5 +1,7 @@
 begin
   Rails.application.routes.draw do
+  resources :services
+
     bushido_routes
   end
 rescue => e
@@ -8,6 +10,8 @@ rescue => e
 end
 
 Watchtower::Application.routes.draw do
+  resources :services
+
   devise_for :users
 
   root :to => 'application#index'
