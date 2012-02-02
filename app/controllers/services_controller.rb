@@ -79,7 +79,7 @@ class ServicesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to services_url }
-      format.json { head :ok }
+      format.json { render json: nil, status: :ok }
     end
   end
 end

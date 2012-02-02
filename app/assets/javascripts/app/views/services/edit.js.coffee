@@ -2,23 +2,27 @@ App.EditServiceView = Ember.View.extend
   templateName: 'app/templates/services/edit'
   ,classNames: ['menu']
   ,tagName: 'form'
-  ,closeClick: ->
+  ,closeClick: (e) ->
+    e.preventDefault()
     @$().hide()
+    false
   ,submit: (event) ->
     service = @get('service')
-    event.preventDefault();
+    event.preventDefault()
     service.save()
            .fail((e) ->
-              console.log("error", e))
-           .done( ->
-              console.log('done!!!', App.servicesController);
+              alert("Sorry failed to save this contact"))
+           .done((e) ->
               App.servicesController.pushObject(service))
   ,destroyRecord: (event) ->
+    @$().disable()
     event.preventDefault()
-    service = @get("service");
+    self = @
+    service = @get("service")
     service.destroy()
-      .fail((e) ->
-          #App.displayError(e)
-          console.log("error",e))
-      .done((e) ->
-          App.servicesController.removeObject(service))
+           .fail((e, textStatus, errorThrown) ->
+             console.log("error",e,textStatus,errorThrown)
+             alert('ajax failure'))
+           .done((data, textStatuz, jqXHR) ->
+             self.$().hide()
+             App.servicesController.removeObject(service))

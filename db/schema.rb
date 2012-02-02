@@ -16,8 +16,9 @@ ActiveRecord::Schema.define(:version => 20120130204128) do
   create_table "services", :force => true do |t|
     t.string   "service_url"
     t.string   "service_type"
-    t.integer  "interval"
+    t.integer  "interval",     :default => 1
     t.string   "status"
+    t.datetime "pinged_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

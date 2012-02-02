@@ -6,7 +6,7 @@ App.servicesObserver = Ember.Object.create
     centerElement = $('#watchtower')
     return if centerElement.length == 0
 
-    serviceElements = $('.service')
+    serviceElements = $('.village')
 
     #Define the center of the circle (cs,cy)
     cx = centerElement.offset().left

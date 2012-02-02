@@ -20,7 +20,7 @@ h1.title
   display: none
   z-index: 200
 
-.service
+.village
   display: none
   width: 50px
   height: 50px
@@ -32,7 +32,13 @@ h1.title
 .menu
   z-index: 2000
 
-#watchtower, .service
+.village.http404
+  background-color: blue !important
+
+.village.http500
+  background-color: red !important
+
+#watchtower, .village
   padding: 10px
   border: 1px solid transparent
   &:hover
