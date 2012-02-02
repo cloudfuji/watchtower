@@ -1,1 +1,7 @@
   <%= javascript_include_tag "application" %>
+
+<script type="text/javascript">
+$(function(){
+ App.servicesController.loadAll(<%= @services.to_json.html_safe %>);
+});
+</script>

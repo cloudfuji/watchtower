@@ -6,10 +6,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-
-//= require_directory ./vendor/ember
-
 //= require_directory ./vendor/jquery
 
-//= require watchtower
+//= require_directory ./vendor/ember/
+
+//= require ./app/app
+//= require_tree ./app/observers
+//= require_tree ./app/models
+//= require_tree ./app/controllers
+//= require_tree ./app/views
+//= require_tree ./app/templates
 

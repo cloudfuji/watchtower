@@ -15,6 +15,7 @@ group :assets do
   gem 'uglifier'
   gem 'sass-rails', '~> 3.1.5'
   gem 'compass',    :git=>'https://github.com/chriseppstein/compass.git', :branch=>'master'
+  gem 'ember-rails'
 end
 
 gem 'jquery-rails'

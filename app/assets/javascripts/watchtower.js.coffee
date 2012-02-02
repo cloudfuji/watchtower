@@ -6,42 +6,45 @@ App.WatchtowerView = Em.View.extend
   click: (evt) ->
     alert('launch tower menu')
   didInsertElement: ->
-    console.log("omg view rendered?", this, this.$());
     this.$()
         .center()
-        .fadeIn('slow', -> App.serviceController.renderTree($(this), $('.service')))
-
-# App.Service = DS.Model.extend
-#   service_url: DS.attr('string')
-#   ,service_type: DS.attr('string')
-#   ,interval: DS.attr('integer')
-#   ,status: DS.attr('string')
-
-App.Service = Em.Object.extend
-  url: null
-  ,type: 'http'
-  ,interval: 5
-  ,status: 'okay'
+        .fadeIn('slow' )
 
 
-App.serviceController = SC.ArrayProxy.create
-  content: [
-    App.Service.create url: "http://bushi.do"
-    App.Service.create url: "http://osr.bushi.do"
-    App.Service.create url: "http://www.gobushido.com"
-    App.Service.create url: "http://4chan.org", status: 'down'
-    App.Service.create url: "http://www.facebook.com"
-  ]
+App.ServiceView = Ember.View.extend
+  templateName: 'app/templates/services/show',
+  classNames: ['service']
 
-  ,loadTodos: ->
-    #services = App.store.findAll(App.Service)
-    this.pushObject services
 
-  , addService: (service) ->
-    this.pushObject service
+App.ServiceMenu = Ember.View.extend
+  classNames: ['menu', 'service_menu']
+  ,closeMenu: ->
+    this.$().hide()
 
-  ,renderTree: (centerElement, serviceElements) ->
 
+App.ListServicesView = Ember.View.extend
+  servicesBinding: 'App.servicesController'
+
+  ,refreshListing: ->
+    App.servicesController.findAll();
+
+
+App.Service = Ember.Resource.extend
+  url: '/services'
+
+
+App.servicesController = Ember.ResourceController.create
+  type: App.Service
+
+
+App.servicesObserver = Ember.Object.create
+  _before: null
+  ,_after: null
+
+  ,renderTree: ->
+
+    centerElement = $('.watchtower:first')
+    serviceElements = $('.service')
     #Define the center of the circle (cs,cy)
     cx = centerElement.offset().left
     cy = centerElement.offset().top
@@ -64,7 +67,6 @@ App.serviceController = SC.ArrayProxy.create
       x = cx + r * Math.cos(cone * i)
       y = cy + r * Math.sin(cone * i)
 
-
       #Extract the integer value of x and y
       x = Math.round(x)
       y = Math.round(y)
@@ -76,3 +78,8 @@ App.serviceController = SC.ArrayProxy.create
              'top' :  y + "px"})
 
       $(element).fadeIn('fast')
+
+   ,arrayWillChange: -> console.log('array changing');
+   arrayDidChange: -> console.log('array did change');
+
+App.servicesController.addArrayObserver(App.servicesObserver)

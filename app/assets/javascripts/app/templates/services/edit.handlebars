@@ -1,0 +1,10 @@
+
+<a href="#" {{action closeClick}} class="close" >X</a>
+{{#with service}}
+<p class="title">{{#if id}}Update this service {{else}}Watch a new service{{/if}}</p>
+  <p>{{view Ember.TextField valueBinding="service_url" placeholder="Service Url"}}</p>
+ <p><button type="submit">
+    {{#if id}}Update{{else}}Create{{/if}}
+  </button></p>
+  {{#if id}}<p><a href="#" {{action destroyRecord}} class="delete">Stop Watching</a></p>{{/if}}
+{{/with}}

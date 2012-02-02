@@ -7,14 +7,14 @@ html body
 
 body
   background: #000 image_url("paper-background.jpg") no-repeat top center
+  font-family: helvetica, arial, sans-serif
 
 h1.title
   font-size: 2em
-  font-family: helvetica, arial, sans-serif
   padding: 15px 0 0 35px
   opacity: .35
 
-.watchtower
+#watchtower
   width: 50px
   height: 100px
   display: none
@@ -29,14 +29,27 @@ h1.title
   z-index: 100
   opacity: .5
 
-.menue
+.menu
   z-index: 2000
 
-.watchtower, .service
+#watchtower, .service
   padding: 10px
   border: 1px solid transparent
   &:hover
     border: 1px solid black
     +border-radius(5px)
     cursor: pointer
+
+.menu
+  display: none
+  width: 250px
+  padding: 10px
+  background: #CCC
+  border: 1px solid black
+  +border-radius(5px)
+  .close
+    float: right
+    text-decoration: none
+  input[type="text"]
+    width: 100%
 

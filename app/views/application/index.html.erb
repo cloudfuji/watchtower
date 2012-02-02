@@ -3,15 +3,29 @@
    <img src="/assets/tower.png" height="100px" width="50px" />
   {{/view}}    
 
-
-{{#each App.ServiceController}}
-  {{#view App.ServiceView contentBinding="this"}}
-    <p class="service">service</p>
+  {{#view App.ListServicesView}}
+   {{#each services}}
+     {{view App.ServiceView serviceBinding="this"}}
+   {{/each}}
   {{/view}}
-{{/each}}
+
+  {{#view App.ServiceMenu}}
+    {{#with service}}
+     {{view Ember.TextField valueBinding="url" placeholder="Serviceurl"}}
+    {{/with}}
+  {{/view}}
+
+
 </script>
 
 
   <!-- {{#collection contentBinding="App.serviceController" }} -->
   <!-- <p class="service">service</p> -->
   <!-- {{/collection}} -->
+
+
+  <!-- {{#each App.ServiceController}} -->
+  <!--   {{#view App.ServiceView contentBinding="this"}} -->
+  <!--     <p class="service">service</p> -->
+  <!--   {{/view}} -->
+  <!-- {{/each}} -->
