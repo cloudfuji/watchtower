@@ -26,5 +26,5 @@ App.EditServiceView = Ember.View.extend
              alert('ajax failure'))
            .done((data, textStatuz, jqXHR) ->
              self.$().hide()
-             App.servicesController.removeObject(service)
-             window.clearInterval(App["serviceInterval"+@self.service.id]))
+             window.clearInterval(App["serviceInterval"+self.service.id])
+             App.servicesController.removeObject(service))

@@ -9,12 +9,13 @@ class Service < ActiveRecord::Base
       puts response.code
       self.status = response.code
     rescue Exception => ex
-      puts "Ping Excetption"
+      puts "Ping Exception"
       puts ex
       self.status = 500
     end
     self.pinged_at = Time.now
     self.save
   end
+
 
 end
