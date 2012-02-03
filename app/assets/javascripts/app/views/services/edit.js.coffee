@@ -10,7 +10,8 @@ App.EditServiceView = Ember.View.extend
     service = @get('service')
     event.preventDefault()
     service.save()
-           .fail((e) ->
+           .fail((e, textStatus, errorThrown) ->
+              console.log(e, textStatus, errorThrown)
               alert("Sorry failed to save this contact"))
            .done((e) ->
               App.servicesController.pushObject(service))
@@ -25,4 +26,5 @@ App.EditServiceView = Ember.View.extend
              alert('ajax failure'))
            .done((data, textStatuz, jqXHR) ->
              self.$().hide()
-             App.servicesController.removeObject(service))
+             App.servicesController.removeObject(service)
+             window.clearInterval(App["serviceInterval"+@self.service.id]))
