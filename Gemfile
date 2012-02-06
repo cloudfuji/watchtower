@@ -1,9 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
-
-# Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+gem 'rails'
 
 gem 'pg'
 
@@ -11,11 +8,12 @@ gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails', '~> 3.1.5', :require => 'sass'
-  gem 'compass',    :git=>'https://github.com/chriseppstein/compass.git', :branch=>'master'
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'ember-rails'
+  gem 'sass-rails'
+  gem 'compass'
+  gem 'compass-rails'
+  gem 'coffee-rails'
   gem 'uglifier'
+  gem 'ember-rails'
 end
 
 gem 'jquery-rails'
@@ -36,7 +34,7 @@ end
 gem "devise"
 gem "devise_bushido_authenticatable", :git => "https://github.com/Bushido/devise_cas_authenticatable.git"
 gem "bushido", :git => "https://github.com/Bushido/bushidogem.git"
-gem "tane", :group => "development", :git => "https://github.com/Bushido/tane.git"
+gem 'tane', :git => "https://github.com/Bushido/tane.git"
 gem "rspec-rails", :group => "development"
 gem "factory_girl_rails", :group => "development"
 gem "awesome_print", :group => "development"
