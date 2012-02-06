@@ -11,7 +11,7 @@ class ServiceObserver < ActiveRecord::Observer
                                })
       end
 
-      if model.status == 200 and (model.status == 500 or model.status == 404)
+      if model.status == 200 and (model.status_was == 500 or model.status_was == 404)
                 Bushido::Event.publish({
                                  :category => :watchtower,
                                  :name => :recovery,
