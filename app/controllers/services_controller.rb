@@ -4,7 +4,7 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    @services = Service.find(:all, :order => "id DESC")
 
     respond_to do |format|
       format.html # index.html.erb
