@@ -32,9 +32,9 @@ group :test do
   gem 'turn', :require => false
 end
 gem "devise"
-gem "devise_bushido_authenticatable", :git => "https://github.com/Bushido/devise_cas_authenticatable.git"
-gem "bushido", :git => "https://github.com/Bushido/bushidogem.git"
-gem 'tane', :git => "https://github.com/Bushido/tane.git"
+gem "devise_bushido_authenticatable"
+gem "bushido"
+gem 'tane'
 gem "rspec-rails", :group => "development"
 gem "factory_girl_rails", :group => "development"
 gem "awesome_print", :group => "development"
