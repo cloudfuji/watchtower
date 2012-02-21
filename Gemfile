@@ -37,5 +37,5 @@ gem "devise_bushido_authenticatable"
 gem "bushido"
 gem 'tane'
 gem "rspec-rails", :group => "development"
-gem "factory_girl_rails", :group => "development"
+# gem "factory_girl_rails", :group => "development"
 gem "awesome_print", :group => "development"
