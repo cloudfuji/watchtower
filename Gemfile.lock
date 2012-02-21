@@ -148,6 +148,9 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.5)
+    sqlite3-ruby (1.3.3)
+      sqlite3 (>= 1.3.3)
     tane (0.0.2)
       awesome_print
       erubis
@@ -189,6 +192,7 @@ DEPENDENCIES
   rails
   rspec-rails
   sass-rails
+  sqlite3-ruby
   tane
   turn
   uglifier
