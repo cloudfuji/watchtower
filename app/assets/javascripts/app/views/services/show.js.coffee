@@ -9,7 +9,6 @@ App.ServiceView = Ember.View.extend
   ,iconClass: 'village'
   ,init: ->
     @_super()
-    console.log("omg super!", @, @get('service'), @service)
   ,didInsertElement: ->
      App.servicesObserver.renderTree()
      self = @
@@ -19,18 +18,31 @@ App.ServiceView = Ember.View.extend
           self.set('service', old_service.deserialize(json))
 
           village = self.$('.village')
+          starting_offset = village.offset()
+          starting_pos = parseInt(village.css('background-position-y'),10)
 
+          # self.$('.village:not(:animated)').animate({
+          #     "background-size": "50%"
+          #     ,"background-position-y": (starting_pos/2)+"px"
+          #   }, 500).animate({
+          #   "background-size": "100%"
+          #   ,"background-position-y": starting_pos+"px"
+          # }, 500)
+
+          # console.log("moving background to ", starting_pos, (starting_pos/2)+"px");
           self.$('.village:not(:animated)').animate({
-            height: (village.height()/2)+"px"
-            ,width: (village.width()/2)+"px"
-             ,top: ((village.offset().top)+13)+"px"
-             ,left: ((village.offset().left)+13)+"px"
+            height: '50px'
+            ,width: '50px'
+            ,"background-position-y": (starting_pos/2)+"px"
+             ,top: starting_offset.top+25+"px"
+             ,left: starting_offset.left+25+"px"
           }, 500).animate({
-            height: village.height()+'px'
-            ,width: village.width()+"px"
-             ,top: ((village.offset().top))+"px"
-             ,left: ((village.offset().left))+"px"
-            }, 500)
+            height: '100px'
+            ,width: '100px'
+            ,"background-position-y": starting_pos+ "px"
+             ,top: starting_offset.top+"px"
+             ,left: starting_offset.left+"px"
+          }, 500)
 
      , 3000)
   ,iconClick: (evt) ->

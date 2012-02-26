@@ -8,6 +8,9 @@ App.Service = Ember.Resource.extend
   ,statusClass: Ember.computed(-> #CSS classes can't start with digits...
     return "http"+@get('status')
     ).property('status')
+  ,isGlowing: Ember.computed(->
+    return parseInt(@status,10) == 500 || 404
+  ).property('isGlowing')
   ,validate: ->
     if !@get('service_url')
       "Service Url must be entered"

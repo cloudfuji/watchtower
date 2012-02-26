@@ -2,6 +2,7 @@ class Service < ActiveRecord::Base
 
   def ping
     puts "pinging service"
+    puts self.service_url
     begin
       uri = URI(self.service_url)
       response = Net::HTTP.get_response(uri)

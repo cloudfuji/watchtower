@@ -1,4 +1,8 @@
-<div {{bindAttr class="iconClass service.statusClass"}} {{action "iconClick"}}></div>
+<div {{bindAttr class="iconClass service.statusClass"}} {{action "iconClick"}}>
+  {{#if service.isGlowing}}
+   <div class="glow_ball"></div>
+  {{/if}}
+</div>
 
 {{view App.EditServiceView serviceBinding="service"}}
 
