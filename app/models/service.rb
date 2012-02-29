@@ -14,7 +14,7 @@ class Service < ActiveRecord::Base
     rescue => e
       puts "Ping Exception"
       puts e.inspect
-      self.status = "500"
+      self.status = new_status = "500"
     end
 
     puts "Service: #{self.inspect}"
@@ -24,8 +24,8 @@ class Service < ActiveRecord::Base
 
     # There's been a status transition
     if new_status != current_status
-      notify_observers(:service_recovered) if status == "200"
-      notify_observers(:service_downed)    if status != "200"
+      notify_observers(:service_recovered) if new_status == "200"
+      notify_observers(:service_downed)    if new_status != "200"
     end
   end
 end
