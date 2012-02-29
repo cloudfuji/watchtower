@@ -4,41 +4,23 @@ class ServiceObserver < ActiveRecord::Observer
   def service_recovered(service)
     puts "Publishing service_downed event for #{service.service_url}"
 
-    data = service.to_hash
+    data = service.as_json
     data[:human] = "#{service.service_url} has gone critical!"
 
-    puts "data:"
-    puts data.inspect
-
-    event = {
-      :category => :service,
-      :name     => :downed,
-      :data     => data
-    }
-
-    puts "Publishing: #{event.inspect}"
-    puts "Publishing to: #{Bushido::Event.events_url}"
-    Bushido::Event.publish(event)
+    Bushido::Event.publish(:category => :service,
+                           :name     => :downed,
+                           :data     => data)
   end
 
   def service_downed(service)
     puts "Publishing service_recovered event for #{service.service_url}"
 
-    data = service.to_hash
+    data = service.as_json
     data[:human] = "#{service.service_url} has recovered."
 
-    puts "data:"
-    puts data.inspect
-
-    event = {
-      :category => :service,
-      :name     => :recovered,
-      :data     => data
-    }
-
-    puts "Publishing: #{event.inspect}"
-    puts "Publishing to: #{Bushido::Event.events_url}"
-    Bushido::Event.publish(event)
+    Bushido::Event.publish(:category => :service,
+                           :name     => :recovered,
+                           :data     => data)
   end
 end
 
