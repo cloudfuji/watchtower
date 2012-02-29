@@ -1,5 +1,11 @@
 class Service < ActiveRecord::Base
 
+  class << self
+    def stable_status?(status)
+      ["2", "3"].include?(status.first)
+    end
+  end
+
   def ping
     puts "pinging service"
     puts self.service_url
@@ -24,8 +30,8 @@ class Service < ActiveRecord::Base
 
     # There's been a status transition
     if new_status != current_status
-      notify_observers(:service_recovered) if new_status == "200"
-      notify_observers(:service_downed)    if new_status != "200"
+      notify_observers(:service_recovered) if  Service.stable_status?( new_status )
+      notify_observers(:service_downed)    if !Service.stable_status?( new_status )
     end
   end
 end
