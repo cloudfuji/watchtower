@@ -7,6 +7,9 @@ class ServiceObserver < ActiveRecord::Observer
     data = service.to_hash
     data[:human] = "#{service.service_url} has gone critical!"
 
+    puts "data:"
+    puts data.inspect
+
     event = {
       :category => :service,
       :name     => :downed,
@@ -23,6 +26,9 @@ class ServiceObserver < ActiveRecord::Observer
 
     data = service.to_hash
     data[:human] = "#{service.service_url} has recovered."
+
+    puts "data:"
+    puts data.inspect
 
     event = {
       :category => :service,
