@@ -11,11 +11,13 @@ class Service < ActiveRecord::Base
       response = Net::HTTP.get_response(uri)
       puts "status: #{response.code}"
       self.status = new_status = response.code 
-    rescue Exception => ex
+    rescue => e
       puts "Ping Exception"
-      puts ex
+      puts e.inspect
       self.status = 500
     end
+
+    puts "Service: #{service.inspect}"
 
     self.pinged_at = Time.now
     self.save
