@@ -1,7 +1,7 @@
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table(:users) do |t|
-      t.bushido_authenticatable
+      t.cloudfuji_authenticatable
       t.string :email
       t.string :first_name
       t.string :last_name

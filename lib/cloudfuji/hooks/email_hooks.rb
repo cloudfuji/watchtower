@@ -1,4 +1,4 @@
-class BushidoEmailHooks < Bushido::EventObserver
+class CloudfujiEmailHooks < Cloudfuji::EventObserver
 
   def mail_simple
     puts "YAY!"

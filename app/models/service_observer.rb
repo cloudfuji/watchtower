@@ -7,7 +7,7 @@ class ServiceObserver < ActiveRecord::Observer
     data = service.as_json
     data[:human] = "#{service.service_url} has recovered!"
 
-    Bushido::Event.publish(:category => :service,
+    Cloudfuji::Event.publish(:category => :service,
                            :name     => :recovered,
                            :data     => data)
   end
@@ -18,7 +18,7 @@ class ServiceObserver < ActiveRecord::Observer
     data = service.as_json
     data[:human] = "#{service.service_url} has gone critical!"
 
-    Bushido::Event.publish(:category => :service,
+    Cloudfuji::Event.publish(:category => :service,
                            :name     => :downed,
                            :data     => data)
   end

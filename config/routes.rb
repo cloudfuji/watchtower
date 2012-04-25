@@ -2,10 +2,10 @@ begin
   Rails.application.routes.draw do
   resources :services
 
-    bushido_routes
+    cloudfuji_routes
   end
 rescue => e
-  puts "Error loading the Bushido routes:"
+  puts "Error loading the Cloudfuji routes:"
   puts "#{e.inspect}"
 end
 

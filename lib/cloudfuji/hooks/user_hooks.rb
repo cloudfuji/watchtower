@@ -1,4 +1,4 @@
-class BushidoUserHooks < Bushido::EventObserver
+class CloudfujiUserHooks < Cloudfuji::EventObserver
   def user_added
     user.create(:email  => params['data']['email'],
       :ido_id => params['data']['ido_id'],
